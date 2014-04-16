@@ -1,0 +1,4 @@
+data/
+quiz.R
+rsync.sh
+rsync_exclude
