@@ -27,13 +27,37 @@ getData <-function()
     file.remove(fileDest)
 }
 
-mergeFiles <- function()
+mergeFolderFile <- function(folder)
 {
-    file_list_raw <- list.files("./data/UCI HAR Dataset/test")
+    # get path to folder
+    path <- paste("./data/UCI HAR Dataset/",folder,"/",sep="")
+    # list all files inside the folder
+    file_list_raw <- list.files(path)
+    # keep only *.txt files
     file_list <- file_list_raw[grepl("*\\.txt$", file_list_raw)]
-    data_sets <- lapply(file_list, function(x) { read.table(paste("./data/UCI HAR Dataset/test/",x,sep = ""), sep = "" , stringsAsFactors= F) } )
-    merged_sets <- Reduce(function(a, b) { merge(a, b, by=0, all=TRUE) }, data_sets)
-    write.csv(merged_Sets, file="./data/merged.csv", row.names=FALSE)
+    # load files data
+    data_sets <- lapply(file_list, function(x) { read.table(paste(path,x,sep = ""), sep = "" , stringsAsFactors= F) } )
+    # merge files data
+    merged_sets <- Reduce(function(a, b)
+    {
+        tmp <- merge(a, b, by=0, all=TRUE)
+        row.names(tmp) <- tmp[,"Row.names"]
+        tmp[,!names(tmp) %in% "Row.names"]
+    }, data_sets)
+    # return resulting data.frame
+    merged_sets
 }
 
-mergeFiles()
+mergeTrainAndTest <- function()
+{
+    # merge test files
+    test_data <- mergeFolderFile("test")
+    # merge train files
+    train_data <- mergeFolderFile("train")
+    # append train rows to test rows
+    all_together <- rbind(test_data,train_data)
+    # write the resulting data.frame to csv
+    write.csv(all_together, file="./data/merged.csv", row.names=FALSE)
+}
+
+mergeTrainAndTest()
