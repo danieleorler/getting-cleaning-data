@@ -27,6 +27,9 @@ getData <-function()
     file.remove(fileDest)
 }
 
+#########################################
+#  merge all the .txt files in a folder #
+#########################################
 mergeFolderFile <- function(folder)
 {
     # get path to folder
@@ -36,7 +39,7 @@ mergeFolderFile <- function(folder)
     # keep only *.txt files
     file_list <- file_list_raw[grepl("*\\.txt$", file_list_raw)]
     # load files data
-    data_sets <- lapply(file_list, function(x) { read.table(paste(path,x,sep = ""), sep = "" , stringsAsFactors= F) } )
+    data_sets <- lapply(file_list, function(x) { read.table(paste(path,x,sep = ""), sep = "" , stringsAsFactors=FALSE) } )
     # merge files data
     merged_sets <- Reduce(function(a, b)
     {
@@ -48,6 +51,23 @@ mergeFolderFile <- function(folder)
     merged_sets
 }
 
+############################################
+#      load and transpose data header      #
+############################################
+getHeader <- function()
+{
+    # load header
+    header <- read.table("./data/UCI HAR Dataset/features.txt", sep = "" , stringsAsFactors=FALSE)
+    # add an empty row to shift the transposed vector
+    header <- rbind(c(NA),header)
+    # transpose the header vector to make it a row
+    header <- t(header[,2:ncol(header)])
+    header
+}
+
+############################################
+#  append and write to a .csv all the data #
+############################################
 mergeTrainAndTest <- function()
 {
     # merge test files
@@ -56,6 +76,9 @@ mergeTrainAndTest <- function()
     train_data <- mergeFolderFile("train")
     # append train rows to test rows
     all_together <- rbind(test_data,train_data)
+    # add header
+    header <- getHeader()
+    colnames(all_together) <- header[1,]
     # write the resulting data.frame to csv
     write.csv(all_together, file="./data/merged.csv", row.names=FALSE)
 }
