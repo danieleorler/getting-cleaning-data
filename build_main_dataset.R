@@ -70,6 +70,7 @@ joinActivityNames <- function(dataset)
     activity_labels <- read.table("./data/UCI HAR Dataset/activity_labels.txt", sep = "" , stringsAsFactors=FALSE)
     # join the main dataset with corresponding activity labels
     dataset <- merge(dataset,activity_labels,by.x="activity_id",by.y="V1")
+    # rename activity label
     colnames(dataset)[colnames(dataset)=="V2"] <- "activity_description"
     dataset
 }
@@ -91,6 +92,11 @@ buildDataset <- function()
     final_dataset <- all_together[ , -which(names(all_together) %in% getColumnsToRemove())]
     # join activity labels
     final_dataset <- joinActivityNames(final_dataset)
+    # moves activity_label column at the beggining
+    col_idx <- grep("activity_description", names(final_dataset))
+    final_dataset <- final_dataset[, c(col_idx, (1:ncol(final_dataset))[-col_idx])]
     # write the resulting data.frame to csv
     write.csv(final_dataset, file="./data/merged.csv", row.names=FALSE)
+    # returns dataset
+    final_dataset
 }

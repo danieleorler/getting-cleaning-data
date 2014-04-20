@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+
 #####################################
 #  create dir if it doesn't exists  #
 #####################################
@@ -24,3 +26,5 @@ getData <-function()
     # remove the zip archive
     file.remove(fileDest)
 }
+
+getData()

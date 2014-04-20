@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
-source("collect_data.R")
 source("build_main_dataset.R")
+source("group_data.R")
 
-
-buildDataset()
+main_dataset <- buildDataset()
+groupped <- groupData(main_dataset)
+write.csv(groupped, file="./data/groupped.csv", row.names=FALSE)
