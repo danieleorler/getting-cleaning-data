@@ -12,5 +12,5 @@ Now that all the datasets are in place you are ready to launch
     Rscript run_analysis.R
 ```
 which will produce two CSV files inside the data/ folder
-1. merged.csv (which is the file containing the main dataset)
-2. groupped.csv (which is the file containing the aggregated data as in point 5 of assignment)
+* merged.csv (which is the file containing the main dataset)
+* groupped.csv (which is the file containing the aggregated data as in point 5 of assignment)
