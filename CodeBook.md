@@ -28,11 +28,11 @@ Before aggregating the data the columns was rearranged in order to have all the 
 __activity_description__    textual description of the activity
 __activity_id__ numerical identifier of the activity
 __subject()__   numerical identifier of the subject
-tBodyAcc-mean()-X   
-tBodyAcc-mean()-Y   
-tBodyAcc-mean()-Z   
-tBodyAcc-std()-X    
-tBodyAcc-std()-Y    
+tBodyAcc-mean()-X
+tBodyAcc-mean()-Y
+tBodyAcc-mean()-Z
+tBodyAcc-std()-X
+tBodyAcc-std()-Y
 tBodyAcc-std()-Z    
 tGravityAcc-mean()-X    
 tGravityAcc-mean()-Y    
