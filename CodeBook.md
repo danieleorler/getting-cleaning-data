@@ -25,24 +25,24 @@ The dataset now is complete and tidy, to aggregate its data by activity and subj
 Before aggregating the data the columns was rearranged in order to have all the 'qualitative variables' at the beginning and the 'quantitative variables' after. This way it was easier to aggregate data.
 
 # Variables #
-__activity_description__    textual description of the activity
-__activity_id__ numerical identifier of the activity
-__subject()__   numerical identifier of the subject
-tBodyAcc-mean()-X
-tBodyAcc-mean()-Y
-tBodyAcc-mean()-Z
-tBodyAcc-std()-X
-tBodyAcc-std()-Y
-tBodyAcc-std()-Z    
-tGravityAcc-mean()-X    
-tGravityAcc-mean()-Y    
-tGravityAcc-mean()-Z    
-tGravityAcc-std()-X 
-tGravityAcc-std()-Y 
-tGravityAcc-std()-Z 
-tBodyAccJerk-mean()-X   
-tBodyAccJerk-mean()-Y   
-tBodyAccJerk-mean()-Z   
+__activity_description__    textual description of the activity  
+__activity_id__ numerical identifier of the activity  
+__subject()__   numerical identifier of the subject  
+tBodyAcc-mean()-X  
+tBodyAcc-mean()-Y  
+tBodyAcc-mean()-Z  
+tBodyAcc-std()-X  
+tBodyAcc-std()-Y  
+tBodyAcc-std()-Z  
+tGravityAcc-mean()-X  
+tGravityAcc-mean()-Y  
+tGravityAcc-mean()-Z  
+tGravityAcc-std()-X  
+tGravityAcc-std()-Y  
+tGravityAcc-std()-Z  
+tBodyAccJerk-mean()-X  
+tBodyAccJerk-mean()-Y  
+tBodyAccJerk-mean()-Z  
 tBodyAccJerk-std()-X    
 tBodyAccJerk-std()-Y    
 tBodyAccJerk-std()-Z    
