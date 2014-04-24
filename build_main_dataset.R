@@ -95,6 +95,8 @@ buildDataset <- function()
     # moves activity_label column at the beggining
     col_idx <- grep("activity_description", names(final_dataset))
     final_dataset <- final_dataset[, c(col_idx, (1:ncol(final_dataset))[-col_idx])]
+    # removes the activity_id column
+    final_dataset$activity_id <- NULL
     # write the resulting data.frame to csv
     write.csv(final_dataset, file="./data/merged.csv", row.names=FALSE)
     # returns dataset

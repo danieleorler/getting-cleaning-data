@@ -3,5 +3,5 @@
 #####################################################################
 groupData <- function(dataset)
 {
-    aggregate( dataset[,4:69], dataset[,1:3], FUN = mean )
+    aggregate( dataset[,3:68], dataset[,1:2], FUN = mean )
 }

@@ -22,11 +22,10 @@ To obtain have activities described with meaningfull strings the dataset has bee
 
 ### Creates a second, independent tidy data set with the average of each variable for each activity and each subject ###
 The dataset now is complete and tidy, to aggregate its data by activity and subject it was used the function aggregate as on group_data.R file.
-Before aggregating the data the columns was rearranged in order to have all the 'qualitative variables' at the beginning and the 'quantitative variables' after. This way it was easier to aggregate data.
+Before aggregating the data the columns was rearranged in order to have all the 'qualitative variables' (indexes) at the beginning and the 'quantitative variables' (variables) after. This way it was easier to aggregate data.
 
 # Variables #
 __activity_description__    textual description of the activity  
-__activity_id__ numerical identifier of the activity  
 __subject()__   numerical identifier of the subject  
 tBodyAcc-mean()-X  
 tBodyAcc-mean()-Y  
